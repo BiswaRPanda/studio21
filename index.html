@@ -1021,18 +1021,10 @@ fieldset.err .slots{border-color:#E07A5F}
             <select id="service" name="service"><option value="">Choose a service</option></select>
             <span class="err-msg">Choose a service.</span>
           </div>
-          <div class="field" id="f-date">
+          <div class="field full" id="f-date">
             <label for="date">Date <b>*</b></label>
             <input id="date" name="date" type="date">
             <span class="err-msg">Pick a date from today onwards.</span>
-          </div>
-          <div class="field" id="f-stylist">
-            <label for="stylist">Stylist</label>
-            <select id="stylist" name="stylist">
-              <option>No preference</option>
-              <option>Mohan</option>
-              <option>Sneha</option>
-            </select>
           </div>
           <fieldset id="f-time">
             <div class="slot-top"><span class="legend" id="timeLegend">Time <b>*</b></span><span class="slot-note" id="slotNote">Every 30 minutes</span></div>
@@ -1512,7 +1504,6 @@ fieldset.err .slots{border-color:#E07A5F}
     name: document.getElementById("name"),
     service: document.getElementById("service"),
     date: document.getElementById("date"),
-    stylist: document.getElementById("stylist"),
     notes: document.getElementById("notes")
   };
   var sendBtn = document.getElementById("sendBtn");
@@ -1565,7 +1556,6 @@ fieldset.err .slots{border-color:#E07A5F}
       service: f.service.value,
       date: f.date.value ? nice(parseISO(f.date.value)) : "",
       time: timeVal(),
-      stylist: f.stylist.value,
       notes: f.notes.value.trim()
     };
   }
@@ -1577,8 +1567,7 @@ fieldset.err .slots{border-color:#E07A5F}
       "Name: " + v(d.name, "your name"),
       "Service: " + v(d.service, "service") + (offerFor() && d.service.indexOf(" offer: ") < 0 ? " (" + DAYS[parseISO(f.date.value).getDay()] + " 50% offer)" : ""),
       "Date: " + v(d.date, "date"),
-      "Time: " + v(d.time, "time"),
-      "Stylist: " + d.stylist
+      "Time: " + v(d.time, "time")
     ];
     if (d.notes) lines.push("Note: " + d.notes);
     lines.push("", "Please confirm if this slot is available. Thank you!");
